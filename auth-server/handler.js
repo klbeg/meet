@@ -75,6 +75,7 @@ module.exports.getAccessToken = async (event) => {
     });
 };
 
+/*
 module.exports.getCalendarEvents = async (event) => {
   const oAuth2Client = new google.auth.OAuth2(
     client_id,
@@ -123,3 +124,4 @@ module.exports.getCalendarEvents = async (event) => {
       });
   });
 };
+*/
