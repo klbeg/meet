@@ -1,4 +1,5 @@
 const { google } = require('googleapis');
+const { resultingClientExists } = require('workbox-core/_private');
 const OAuth2 = google.auth.OAuth2;
 const calendar = google.calendar('v3');
 
@@ -81,9 +82,44 @@ module.exports.getCalendarEvents = async (event) => {
     redirect_uris[0]
   );
 
-  const token = decodeURI(`event.pathParameters.access_token`);
-  console.log(token);
+  const access_token = decodeURI(`event.pathParameters.access_token`);
+  console.log('after declaring access_token: ', access_token);
+  oAuth2Client.setCredentials({ access_token });
+
   return new Promise((resolve, reject) => {
-    oAuth2Client.getCalendarEvents();
+    oAuth2Client
+      .getEvents(access_token, (err, events) => {
+        calendar.events.list(
+          {
+            calendarId: calendar_id,
+            auth: oAuth2Client,
+            timeMin: new Date().toISOString(),
+            singleEvents: true,
+            orderBy: 'startTime',
+          },
+          (error, response) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(response);
+            }
+          }
+        );
+      })
+      .then((events) => {
+        return {
+          statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+          body: JSON.stringify({ events: resultingClientExists.data.items }),
+        };
+      })
+      .catch((err) => {
+        return {
+          statusCode: 500,
+          body: JSON.stringify(err),
+        };
+      });
   });
 };
