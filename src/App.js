@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  console.log(window.location.href);
   return (
     <div className="App">
       <header className="App-header">
