@@ -73,3 +73,17 @@ module.exports.getAccessToken = async (event) => {
       };
     });
 };
+
+module.exports.getCalendarEvents = async (event) => {
+  const oAuth2Client = new google.auth.OAuth2(
+    client_id,
+    client_secret,
+    redirect_uris[0]
+  );
+
+  const token = decodeURI(`event.pathParameters.access_token`);
+  console.log(token);
+  return new Promise((resolve, reject) => {
+    oAuth2Client.getCalendarEvents();
+  });
+};
