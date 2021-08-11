@@ -61,6 +61,7 @@
       const getAccessToken = document.getElementById('getToken');
       const accessTokenElement = document.getElementById('accessToken');
       const getToken = `https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/token`;
+
       getAccessToken.onclick = function () {
         let code = codeValue.value;
 
@@ -77,21 +78,22 @@
           })
       }    
 
-       const getEvents = document.getElementById('getEvents')
-       const events = document.getElementById('events')
-       const getCalendarEvents = 'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/get-events';
+        const getEvents = document.getElementById('getEvents')
+        const events = document.getElementById('events')
+        const getCalendarEvents = 'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/get-events';
 
-       getEvents.onclick = function () {
-         const { access_token } = JSON.parse(accessTokenElement.innerText)
-         const eventRequest = getCalendarEvents + '/' + access_token;
+        getEvents.onclick = function () {
+          const { access_token } = JSON.parse(accessTokenElement.innerText);
 
-         fetch(eventRequest)
-           .then(function (response) {
-             return response.json();
-           })
-           .then(function(json) {
-             events.innerText = JSON.stringify(json, null, 2)
-           })
+          const eventRequest = getCalendarEvents + '/' + access_token;
+
+          fetch(eventRequest)
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function(json) {
+              events.innerText = JSON.stringify(json, null, 2)
+            })
       }
     </script>
   </body>
