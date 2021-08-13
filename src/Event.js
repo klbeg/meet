@@ -3,7 +3,7 @@ import EventDetails from './EventDetails';
 
 class Event extends Component {
   state = {
-    showDetails: true,
+    showDetails: undefined,
   };
   handleShowDetails = () => {
     this.setState({
@@ -11,11 +11,22 @@ class Event extends Component {
     });
   };
 
+  handleHideDetails = () => {
+    this.setState({
+      showDetails: false,
+    });
+  };
+
   render() {
     return (
       <div className="event">
         {this.state.showDetails ? <EventDetails /> : <div />}
-        <button onClick={this.handleShowDetails}>Show Details</button>
+        <button className="show-details" onClick={this.handleShowDetails}>
+          Show Details
+        </button>
+        <button className="hide-details" onClick={this.handleHideDetails}>
+          Hide Details
+        </button>
       </div>
     );
   }
