@@ -1,7 +1,6 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
-import { mockData } from '../mock-data';
 import NumberOfEvents from '../NumberOfEvents';
 
 describe('<NumberOfEvents /> componenet', () => {
