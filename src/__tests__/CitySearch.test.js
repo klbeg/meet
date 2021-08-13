@@ -6,9 +6,10 @@ import { mockData } from '../mock-data';
 import { extractLocations } from '../api';
 
 describe('<CitySearch /> component', () => {
-  let CitySearchWrapper;
+  let locations, CitySearchWrapper;
   beforeAll(() => {
-    CitySearchWrapper = shallow(<CitySearch />);
+    locations = extractLocations(mockData);
+    CitySearchWrapper = shallow(<CitySearch locations={locations} />);
   });
 
   test('render text input', () => {
@@ -34,7 +35,6 @@ describe('<CitySearch /> component', () => {
   });
 
   test('render list of suggestions correctly', () => {
-    const locations = extractLocations(mockData);
     const CitySearchWrapper = shallow(<CitySearch />);
     CitySearchWrapper.setState({ suggestions: locations });
     const suggestions = CitySearchWrapper.state('suggestions');
@@ -46,5 +46,17 @@ describe('<CitySearch /> component', () => {
         suggestions[i]
       );
     }
+  });
+
+  test('suggestion list matches the query when changed', () => {
+    CitySearchWrapper.setState({ query: '', suggestions: [] });
+    CitySearchWrapper.find('.city').simulate('change', {
+      target: { value: 'Berlin' },
+    });
+    const query = CitySearchWrapper.state('query');
+    const filteredLocations = locations.filter((location) => {
+      return location.toUpperCase().indexOf(query.toUpperCase()) > -1;
+    });
+    expect(CitySearchWrapper.state('suggestions')).toEqual(filteredLocations);
   });
 });
