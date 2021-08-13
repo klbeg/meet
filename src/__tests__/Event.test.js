@@ -11,9 +11,6 @@ describe('<EventDetails /> component', () => {
   });
 
   test('Event details should be collapsed by default', () => {
-    EventWrapper.setState({
-      showDetails: false,
-    });
     expect(EventWrapper.find(EventDetails)).toHaveLength(0);
   });
 
