@@ -9,6 +9,7 @@ class CitySearch extends Component {
   handleItemClicked = (suggestion) => {
     this.setState({
       query: suggestion,
+      suggestions: [],
     });
 
     this.props.updateEvents(suggestion);
@@ -33,6 +34,7 @@ class CitySearch extends Component {
       <div className="CitySearch">
         <input
           className="city"
+          placeholder="Search for a city"
           value={this.state.query}
           onChange={this.handleInputChange}
           type="text"
@@ -46,9 +48,13 @@ class CitySearch extends Component {
               {suggestion}
             </li>
           ))}
-          <li key="all" onClick={() => this.handleItemClicked('all')}>
-            <b>See all cities</b>
-          </li>
+          {this.state.suggestions.length === 1 ? (
+            <li key="all" onClick={() => this.handleItemClicked('all')}>
+              <b>See all cities</b>
+            </li>
+          ) : (
+            <div />
+          )}
         </ul>
       </div>
     );
