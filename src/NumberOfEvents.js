@@ -15,12 +15,10 @@ class NumberOfEvents extends Component {
   render() {
     return (
       <div>
-        <label>Number of Events:</label>
         <input
           className="setEventsLength"
           onChange={this.handleUpdateEventsLength}
           type="text"
-          placeholder={this.state.eventsLength}
         />
       </div>
     );
