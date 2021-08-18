@@ -12,11 +12,7 @@ const getToken = async (code) => {
   console.log('getToken called, "encodeCode" updated: ', encodeCode);
 
   const { access_token } = await axios
-    .get(getTokenUrl + '/' + encodeCode, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-    })
+    .get(getTokenUrl + '/' + encodeCode)
     .then((res) => {
       console.log('getToken response: ', res.json(access_token));
       return res.json();
