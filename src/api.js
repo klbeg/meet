@@ -13,11 +13,11 @@ const getToken = async (code) => {
 
   const { access_token } = await fetch(getTokenUrl + '/' + encodeCode)
     .then((res) => {
-      console.log('getToken response: ', res.json());
-      return res.json(access_token);
+      console.log('getToken response: ', res.json(access_token));
+      return res.json();
     })
     .catch((error) => error);
-  // saving to force changes
+
   console.log('post promise value for "access_token": ', access_token);
   access_token && localStorage.setItem('access_token', access_token);
 
