@@ -8,11 +8,10 @@ const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const getTokenUrl =
     'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/token';
-  console.log('getToken "code" variable: ', code);
+
   console.log('getToken called, "encodeCode" updated: ', encodeCode);
 
-  const { access_token } = await axios
-    .get(getTokenUrl + '/' + encodeCode)
+  const { access_token } = await fetch(getTokenUrl + '/' + encodeCode)
     .then((res) => {
       console.log('getToken response: ', res.json());
       res.json();
@@ -31,7 +30,9 @@ export const getAccessToken = async () => {
   if (!accessToken || tokenCheck.error) {
     await localStorage.removeItem('access_token');
     const searchParams = new URLSearchParams(window.location.search);
-    const code = await searchParams.get('code');
+    //const code = await searchParams.get('code');
+    const code =
+      '4%2F0AX4XfWi6uLxan5QeYbfd3P0MNFIBTnK5w_hKR_JldSuz8cVbr8ocrzlfp59aedJeRrNFlg';
     if (!code) {
       const results = await axios.get(
         'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/get-auth-url'
