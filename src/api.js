@@ -22,6 +22,7 @@ const getToken = async (code) => {
   const authTokenDoneGotten = (token) => {
     console.log('$ token from "authTokenDoneGotten": ', token);
   };
+  console.log('$ token post responese: ', access_token);
   access_token && localStorage.setItem('access_token', access_token);
 
   return access_token;
