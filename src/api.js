@@ -5,6 +5,7 @@ import NProgress from 'nprogress';
 import { mockData } from './mock-data';
 
 const getToken = async (code) => {
+  console.log('getToken called');
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
     'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/token' +
@@ -20,8 +21,8 @@ const getToken = async (code) => {
 };
 
 export const getAccessToken = async () => {
+  console.log('getAccessToken being called');
   const accessToken = localStorage.getItem('access_token');
-  console.log('checking for access token');
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
   if (!accessToken || tokenCheck.error) {
@@ -43,6 +44,7 @@ export const getAccessToken = async () => {
 };
 
 export const extractLocations = (events) => {
+  console.log('extractLocations being called');
   var extractLocations = events.map((event) => event.location);
   var locations = [...new Set(extractLocations)];
   return locations;
@@ -79,6 +81,7 @@ const removeQuery = () => {
 };
 
 export const getEvents = async () => {
+  console.log('getEvents being called');
   NProgress.start();
 
   if (window.location.href.startsWith('http://localhost')) {
