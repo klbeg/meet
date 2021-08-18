@@ -12,6 +12,10 @@ class App extends Component {
     locations: [],
   };
 
+  /*
+still getting the following error intermittently,
+this should have been solved with componentWillMount logic
+*/
   componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
