@@ -6,16 +6,19 @@ import { mockData } from './mock-data';
 
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
+  console.log('getToken "code" variable: ', code);
   console.log('getToken called, "encodeCode" updated: ', encodeCode);
-  //
-  //currently failing here
-  //
-  const { access_token } = await axios
-    .get(
-      'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/token' +
-        '/' +
-        encodeCode
-    )
+
+  const { access_token } = await fetch(
+    'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/token' +
+      '/' +
+      encodeCode,
+    {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    }
+  )
     .then((res) => {
       console.log('getToken response: ', res.json());
       res.json();
