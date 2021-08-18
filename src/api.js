@@ -6,6 +6,7 @@ import { mockData } from './mock-data';
 
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
+  console.log('getToken "code" variable: ', code);
   console.log('getToken called, "encodeCode" updated: ', encodeCode);
 
   const { access_token } = await fetch(
