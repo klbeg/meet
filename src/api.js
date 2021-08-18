@@ -13,7 +13,10 @@ const getToken = async (code) => {
       '/' +
       encodeCode
   )
-    .then((res) => res.json)
+    .then((res) => {
+      console.log('getToken response: ', res.json());
+      res.json();
+    })
     .catch((error) => error);
 
   access_token && localStorage.setItem('access_token', access_token);
