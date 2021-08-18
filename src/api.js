@@ -18,6 +18,7 @@ const getToken = async (code) => {
     })
     .catch((error) => error);
 
+  console.log('post promise value for "access_token": ', access_token);
   access_token && localStorage.setItem('access_token', access_token);
 
   return access_token;
