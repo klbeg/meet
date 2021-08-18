@@ -11,6 +11,10 @@ const getToken = async (code) => {
 
   console.log('getToken called, "encodeCode" updated: ', encodeCode);
 
+  const authTokenDoneGotten = (token) => {
+    console.log('token from "authTokenDoneGotten": ', token);
+  };
+
   const { access_token } = await fetch(getTokenUrl + '/' + encodeCode)
     .then((res) => {
       authTokenDoneGotten(res.json);
@@ -19,9 +23,6 @@ const getToken = async (code) => {
     })
     .catch((error) => error);
 
-  const authTokenDoneGotten = (token) => {
-    console.log('token from "authTokenDoneGotten": ', token);
-  };
   console.log('*token post responese: ', access_token);
   access_token && localStorage.setItem('access_token', access_token);
 
