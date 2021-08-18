@@ -14,7 +14,7 @@ const getToken = async (code) => {
   const { access_token } = await fetch(getTokenUrl + '/' + encodeCode)
     .then((res) => {
       console.log('getToken response: ', res.json());
-      res.json();
+      return res.json();
     })
     .catch((error) => error);
 
