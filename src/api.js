@@ -5,8 +5,8 @@ import NProgress from 'nprogress';
 import { mockData } from './mock-data';
 
 const getToken = async (code) => {
-  console.log('getToken called, "code" passed: ', code);
   const encodeCode = encodeURIComponent(code);
+  console.log('getToken called, "encodeCode": ', encodeCode);
 
   const { access_token } = await fetch(
     'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/token' +
