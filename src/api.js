@@ -11,7 +11,11 @@ const getToken = async (code) => {
 
   console.log('getToken called, "encodeCode" updated: ', encodeCode);
 
-  const { access_token } = await fetch(getTokenUrl + '/' + encodeCode)
+  const { access_token } = await fetch(getTokenUrl + '/' + encodeCode, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+  })
     .then((res) => {
       console.log('getToken response: ', res.json(access_token));
       return res.json();
