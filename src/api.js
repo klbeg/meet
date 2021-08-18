@@ -11,7 +11,12 @@ const getToken = async (code) => {
   const { access_token } = await fetch(
     'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/token' +
       '/' +
-      encodeCode
+      encodeCode,
+    {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    }
   )
     .then((res) => {
       console.log('getToken response: ', res.json());
