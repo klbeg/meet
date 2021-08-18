@@ -14,7 +14,7 @@ const getToken = async (code) => {
   const { access_token } = await axios
     .get(getTokenUrl + '/' + encodeCode)
     .then((res) => {
-      console.log('getToken response: ', res.json(access_token));
+      console.log('getToken response: ', res.json());
       return res.json();
     })
     .catch((error) => error);
