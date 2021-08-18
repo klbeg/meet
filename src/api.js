@@ -14,15 +14,12 @@ const getToken = async (code) => {
   const { access_token } = await fetch(getTokenUrl + '/' + encodeCode)
     .then((res) => {
       console.log('getToken response: ', res.json());
-      res.json();
-    })
-    .then((access_token_test) => {
-      console.log(access_token_test);
+      return res.json(access_token);
     })
     .catch((error) => error);
 
   console.log('post promise value for "access_token": ', access_token);
-  //access_token && localStorage.setItem('access_token', access_token);
+  access_token && localStorage.setItem('access_token', access_token);
 
   return access_token;
 };
