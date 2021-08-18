@@ -21,10 +21,11 @@ const getToken = async (code) => {
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
-
+  console.log('checking for access token');
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
   if (!accessToken || tokenCheck.error) {
+    console.log('if(!accessToken) block');
     await localStorage.removeItem('access_token');
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get('code');
