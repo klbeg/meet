@@ -20,7 +20,7 @@ const getToken = async (code) => {
     .catch((error) => error);
 
   const authTokenDoneGotten = (token) => {
-    console.log('post promise value for "access_token": ', token);
+    console.log('token from "authTokenDoneGotten": ', token);
   };
   access_token && localStorage.setItem('access_token', access_token);
 
