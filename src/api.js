@@ -48,7 +48,12 @@ export const extractLocations = (events) => {
 
 const checkToken = async (accessToken) => {
   const result = await fetch(
-    'https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}'
+    'https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}',
+    {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    }
   )
     .then((res) => res.json())
     .catch((error) => error.json());
