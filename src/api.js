@@ -41,6 +41,7 @@ export const getAccessToken = async () => {
 };
 
 export const extractLocations = (events) => {
+  console.log(events);
   var extractLocations = events.map((event) => event.location);
   var locations = [...new Set(extractLocations)];
   return locations;
