@@ -30,38 +30,32 @@ const getToken = async (code) => {
 };
 
 export const getAccessToken = async () => {
-  console.log('getAccessToken being called');
   const accessToken = localStorage.getItem('access_token');
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
   if (!accessToken || tokenCheck.error) {
-    console.log('if(!accessToken) block');
     await localStorage.removeItem('access_token');
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get('code');
     if (!code) {
-      console.log('getting to get auth call');
       const results = await axios.get(
         'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/get-auth-url'
       );
       const { authUrl } = results.data;
       return (window.location.href = authUrl);
     }
-    console.log('"code" being passed to get token: ', code);
     return code && getToken(code);
   }
   return accessToken;
 };
 
 export const extractLocations = (events) => {
-  console.log('extractLocations being called');
   var extractLocations = events.map((event) => event.location);
   var locations = [...new Set(extractLocations)];
   return locations;
 };
 
 const checkToken = async (accessToken) => {
-  console.log('accessToken: ', accessToken);
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`,
     {
@@ -91,7 +85,6 @@ const removeQuery = () => {
 };
 
 export const getEvents = async () => {
-  console.log('getEvents being called');
   NProgress.start();
 
   if (window.location.href.startsWith('http://localhost')) {
