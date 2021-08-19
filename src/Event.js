@@ -3,7 +3,7 @@ import EventDetails from './EventDetails';
 
 class Event extends Component {
   state = {
-    showDetails: undefined,
+    showDetails: false,
   };
   handleShowDetails = (value) => {
     this.setState({

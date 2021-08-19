@@ -3,6 +3,7 @@ import { shallow, mount } from 'enzyme';
 
 import App from '../App';
 import EventList from '../EventList';
+import Event from '../Event';
 import CitySearch from '../CitySearch';
 import { mockData } from '../mock-data';
 import { extractLocations, getEvents } from '../api';
@@ -69,9 +70,9 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
-  // test('list of events loaded by default on page load', async () => {
-  //   const AppWrapper = mount(<App />);
-  //   const EventsList = AppWrapper.find(EventList).find('ul');
-  //   expect(EventsList.length).toBeGreaterThan(1);
-  // });
+  test('list of events loaded by default on page load', async () => {
+    const AppWrapper = mount(<App />);
+    const EventsList = AppWrapper.find(EventList);
+    expect(EventsList.find('ul')).toHaveLength(2);
+  });
 });
