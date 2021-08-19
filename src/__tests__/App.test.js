@@ -21,6 +21,7 @@ describe('<App /> component', () => {
   });
 });
 
+//  start integrated testing
 describe('<App /> integration', () => {
   test('App passes "events" state as a prop to EventList', () => {
     const AppWrapper = mount(<App />);
@@ -67,4 +68,10 @@ describe('<App /> integration', () => {
     expect(AppWrapper.state('events')).toEqual(allEvents);
     AppWrapper.unmount();
   });
+
+  // test('list of events loaded by default on page load', async () => {
+  //   const AppWrapper = mount(<App />);
+  //   const EventsList = AppWrapper.find(EventList).find('ul');
+  //   expect(EventsList.length).toBeGreaterThan(1);
+  // });
 });
