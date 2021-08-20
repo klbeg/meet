@@ -11,17 +11,12 @@ const getToken = async (code) => {
 
   console.log('getToken called, "encodeCode" updated: ', encodeCode);
 
-  const authTokenDoneGotten = (token) => {
-    console.log('token from "authTokenDoneGotten": ', token);
-  };
-
   const { access_token } = await fetch(getTokenUrl + '/' + encodeCode, {
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
   })
     .then((res) => {
-      authTokenDoneGotten(res.json);
       console.log('getToken response: ', res.json());
       return res.json();
     })
@@ -91,10 +86,10 @@ const removeQuery = () => {
 export const getEvents = async () => {
   NProgress.start();
 
-  if (window.location.href.startsWith('http://localhost')) {
-    NProgress.done();
-    return mockData;
-  }
+  // if (window.location.href.startsWith('http://localhost')) {
+  //   NProgress.done();
+  //   return mockData;
+  // }
 
   const token = await getAccessToken();
 

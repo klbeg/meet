@@ -13,7 +13,10 @@ const credentials = {
   token_uri: 'https://oauth2.googleapis.com/token',
   auth_provider_x509_cert_url: 'https://www.googleapis.com/oauth2/v1/certs',
   redirect_uris: ['https://klbeg.github.io/meet/'],
-  javascript_origins: ['https://klbeg.github.io', 'http://localhost:3000'],
+  javascript_origins: [
+    'https://klbeg.github.io/meet',
+    'http://localhost:3000/meet',
+  ],
 };
 
 const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
@@ -84,9 +87,6 @@ module.exports.getCalendarEvents = async (event) => {
   const access_token = decodeURIComponent(
     `${event.pathParameters.access_token}`
   );
-
-  // const access_token =
-  //   'ya29.a0ARrdaM-PCf3wTURXvmThxp5g8FVbDJyxj3OMSESQ-DJQMZXyTYaJDeYeIbuUj1ymHf_eX_lAcVXK8bBNDizhygu7b7iek3W0rg4wBJDs4941JeLpXR5Ff4xzSrzaMZazsOHulOXcugUOOzMtO3qqMBUD5uSdQA';
 
   oAuth2Client.setCredentials({ access_token });
 
