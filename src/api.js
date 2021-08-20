@@ -30,7 +30,7 @@ const getToken = async (code) => {
   console.log('*token post responese: ', access_token);
   access_token && localStorage.setItem('access_token', access_token);
 
-  //return access_token;
+  return access_token;
 };
 
 export const getAccessToken = async () => {
