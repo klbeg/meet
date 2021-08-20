@@ -104,7 +104,11 @@ export const getEvents = async () => {
       'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/get-events' +
       '/' +
       'token';
-    const result = await axios.get(url);
+    const result = await axios.get(url, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
     if (result.data) {
       var locations = extractLocations(result.data.events);
       localStorage.setItem('lastEvents', JSON.stringify(result.data));
