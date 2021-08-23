@@ -5,6 +5,8 @@ import App from '../App';
 import EventList from '../EventList';
 import Event from '../Event';
 import CitySearch from '../CitySearch';
+import NumberOfEvents from '../NumberOfEvents';
+
 import { mockData } from '../mock-data';
 import { extractLocations, getEvents } from '../api';
 
@@ -72,7 +74,28 @@ describe('<App /> integration', () => {
 
   test('list of events loaded by default on page load', async () => {
     const AppWrapper = mount(<App />);
-    const EventsList = AppWrapper.find(EventList);
-    expect(EventsList.find('ul')).toHaveLength(2);
+    const EventsListWrapper = AppWrapper.find(EventList);
+    const EventWrapper = EventsListWrapper.find(Event);
+    expect(EventWrapper.length).toBeGreaterThan(1);
+  });
+
+  test('if no number of events is specified 32 events should be shown', async () => {
+    const AppWrapper = mount(<App />);
+    const EventsListWrapper = AppWrapper.find(EventList);
+    const EventWrapper = EventsListWrapper.find(Event);
+    expect(EventWrapper).toHaveLength(32);
+  });
+
+  test('if 16 is entered to NumberOfEvents, 16 events should be shown', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const EventsListWrapper = AppWrapper.find(EventList);
+    const EventWrapper = EventsListWrapper.find(Event);
+    let eventObject = { target: { value: '16' } };
+    NumberOfEventsWrapper.find('.setEventsLength').simulate(
+      'change',
+      eventObject
+    );
+    expect(EventWrapper).toHaveLength(16);
   });
 });

@@ -10,6 +10,7 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
+    numOfEvents: 32,
   };
 
   /*
@@ -28,6 +29,13 @@ this should have been solved with componentWillMount logic
   componentWillUnmount() {
     this.mounted = false;
   }
+
+  updateNumberOfEvents = (value) => {
+    console.log('updateNumberOfEvents called: ', value);
+    this.setState({
+      numOfEvents: value,
+    });
+  };
 
   updateEvents = (location) => {
     getEvents().then((events) => {
@@ -48,8 +56,11 @@ this should have been solved with componentWillMount logic
           locations={this.state.locations}
           updateEvents={this.updateEvents}
         />
-        <NumberOfEvents />
-        <EventList events={this.state.events} />
+        <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
+        <EventList
+          events={this.state.events}
+          numOfEvents={this.state.numOfEvents}
+        />
       </div>
     );
   }
