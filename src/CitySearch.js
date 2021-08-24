@@ -13,8 +13,8 @@ class CitySearch extends Component {
       showSuggestions: false,
     });
 
-    //this.props.updateEvents(suggestion);
-    console.log(this.props.updateEvents(suggestion));
+    console.log('updateEvents: ', this.props.updateEvents);
+    this.props.updateEvents(suggestion);
   };
 
   handleInputChange = (event) => {

@@ -31,7 +31,6 @@ this should have been solved with componentWillMount logic
   }
 
   updateNumberOfEvents = (value) => {
-    console.log('updateNumberOfEvents called: ', value);
     this.setState({
       numOfEvents: value,
     });
