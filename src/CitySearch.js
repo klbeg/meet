@@ -7,6 +7,10 @@ class CitySearch extends Component {
     showSuggestions: undefined,
   };
 
+  handleTestMethod = () => {
+    console.log(this.props.testMethod);
+  };
+
   handleItemClicked = (suggestion) => {
     this.setState({
       query: suggestion,
@@ -36,8 +40,10 @@ class CitySearch extends Component {
       <div className="CitySearch">
         <input
           className="city"
+          placeholder="CitySearch"
           value={this.state.query}
-          onChange={this.handleInputChange}
+          //onChange={this.handleInputChange}
+          onChange={this.handleTestMethod}
           onFocus={() => {
             this.setState({ showSuggestions: true });
           }}

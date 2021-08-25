@@ -36,6 +36,10 @@ this should have been solved with componentWillMount logic
     });
   };
 
+  testMethod = () => {
+    console.log('this is working!');
+  };
+
   updateEvents = (location) => {
     getEvents().then((events) => {
       const locationEvents =
@@ -54,8 +58,12 @@ this should have been solved with componentWillMount logic
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
+          testMethod={this.testMethod}
         />
-        <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
+        <NumberOfEvents
+          testMethod={this.testMethod}
+          updateNumberOfEvents={this.updateNumberOfEvents}
+        />
         <EventList
           events={this.state.events}
           numOfEvents={this.state.numOfEvents}
