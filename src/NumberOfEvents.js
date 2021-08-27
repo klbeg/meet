@@ -5,16 +5,11 @@ class NumberOfEvents extends Component {
     eventsLength: 32,
   };
 
-  handleTestMethod = () => {
-    console.log(this.props.testMethod);
-  };
-
   handleUpdateEventsLength = (event) => {
     const value = parseInt(event.target.value);
     this.setState({
       eventsLength: value,
     });
-
     this.props.updateNumberOfEvents(value);
   };
 
@@ -23,7 +18,7 @@ class NumberOfEvents extends Component {
       <div>
         <input
           className="setEventsLength"
-          onChange={this.handleTestMethod}
+          onChange={this.handleUpdateEventsLength}
           type="text"
           placeholder="setEventsLength"
         />

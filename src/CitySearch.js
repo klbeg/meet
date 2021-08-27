@@ -7,17 +7,11 @@ class CitySearch extends Component {
     showSuggestions: undefined,
   };
 
-  handleTestMethod = () => {
-    console.log(this.props.testMethod);
-  };
-
   handleItemClicked = (suggestion) => {
     this.setState({
       query: suggestion,
       showSuggestions: false,
     });
-
-    console.log('updateEvents: ', this.props.updateEvents);
     this.props.updateEvents(suggestion);
   };
 
@@ -42,8 +36,7 @@ class CitySearch extends Component {
           className="city"
           placeholder="CitySearch"
           value={this.state.query}
-          //onChange={this.handleInputChange}
-          onChange={this.handleTestMethod}
+          onChange={this.handleInputChange}
           onFocus={() => {
             this.setState({ showSuggestions: true });
           }}

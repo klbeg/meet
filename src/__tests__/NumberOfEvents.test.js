@@ -6,7 +6,9 @@ import NumberOfEvents from '../NumberOfEvents';
 describe('<NumberOfEvents /> componenet', () => {
   let NumberOfEventsWrapper;
   beforeAll(() => {
-    NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    NumberOfEventsWrapper = shallow(
+      <NumberOfEvents updateNumberOfEvents={jest.fn()} />
+    );
   });
   test('is NumberOfEvents rendering', () => {
     expect(NumberOfEventsWrapper.find('div')).toHaveLength(1);

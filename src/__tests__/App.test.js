@@ -86,16 +86,12 @@ describe('<App /> integration', () => {
     expect(EventWrapper).toHaveLength(32);
   });
 
-  test('if 16 is entered to NumberOfEvents, 16 events should be shown', async () => {
+  test('if state.numOfEvents = 16, 16 events should be shown', async () => {
     const AppWrapper = mount(<App />);
-    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
     const EventsListWrapper = AppWrapper.find(EventList);
+    EventsListWrapper.setState({ eventsLength: 16 });
     const EventWrapper = EventsListWrapper.find(Event);
-    let eventObject = { target: { value: '16' } };
-    NumberOfEventsWrapper.find('.setEventsLength').simulate(
-      'change',
-      eventObject
-    );
+    expect(EventsListWrapper.state('eventsLength')).toBe(16);
     expect(EventWrapper).toHaveLength(16);
   });
 });

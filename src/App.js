@@ -10,7 +10,7 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numOfEvents: 32,
+    numOfEvents: null,
   };
 
   /*
@@ -34,10 +34,10 @@ this should have been solved with componentWillMount logic
     this.setState({
       numOfEvents: value,
     });
-  };
-
-  testMethod = () => {
-    console.log('this is working!');
+    console.log(
+      'numOfEvents in the func updateNumberOfEvents: ',
+      this.state.numOfEvents
+    );
   };
 
   updateEvents = (location) => {
@@ -58,12 +58,8 @@ this should have been solved with componentWillMount logic
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
-          testMethod={this.testMethod}
         />
-        <NumberOfEvents
-          testMethod={this.testMethod}
-          updateNumberOfEvents={this.updateNumberOfEvents}
-        />
+        <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
         <EventList
           events={this.state.events}
           numOfEvents={this.state.numOfEvents}
