@@ -117,4 +117,13 @@ describe('<App /> integration', () => {
     expect(EventWrapper).toHaveLength(32);
     AppWrapper.unmount();
   });
+
+  test('inputting 16 into NumberOfEvents, EventList should show 16 events', async () => {
+    const AppWrapper = mount(<App />);
+    const SetEventsLength =
+      AppWrapper.find(NumberOfEvents).find('.setEventsLength');
+    const numOfEventsChange = { target: { value: 16 } };
+    SetEventsLength.simulate('change', numOfEventsChange);
+    expect(AppWrapper.find(EventList).find('ul li')).toHaveLength(16);
+  });
 });
