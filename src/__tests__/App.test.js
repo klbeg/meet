@@ -125,5 +125,6 @@ describe('<App /> integration', () => {
     const numOfEventsChange = { target: { value: 16 } };
     SetEventsLength.simulate('change', numOfEventsChange);
     expect(AppWrapper.find(EventList).find('ul li')).toHaveLength(16);
+    AppWrapper.unmount();
   });
 });

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Event from './Event';
-import { mockData } from './mock-data';
 
 class EventList extends Component {
   state = {
@@ -9,11 +8,9 @@ class EventList extends Component {
   };
 
   render() {
-    //const { events, numOfEvents } = this.props;
     return (
       <ul className="EventList">
-        {/* {this.props.events.map((event) => ( */}
-        {mockData
+        {this.props.events
           .slice(
             0,
             this.props.numOfEvents
