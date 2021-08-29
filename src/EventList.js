@@ -9,7 +9,7 @@ class EventList extends Component {
   };
 
   render() {
-    const { events, numOfEvents } = this.props;
+    //const { events, numOfEvents } = this.props;
     return (
       <ul className="EventList">
         {/* {this.props.events.map((event) => ( */}

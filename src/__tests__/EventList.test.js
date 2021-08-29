@@ -6,8 +6,16 @@ import Event from '../Event';
 import { mockData } from '../mock-data';
 
 describe('<EventList /> component', () => {
+  let EventListWrapper;
+  beforeAll(() => {
+    EventListWrapper = shallow(<EventList events={mockData} />);
+  });
   test('render correct number of events', () => {
-    const EventListWrapper = shallow(<EventList events={mockData} />);
     expect(EventListWrapper.find(Event)).toHaveLength(32);
+  });
+
+  test('if state.eventsLength is 16, only 16 events should be shown', () => {
+    EventListWrapper.setState({ eventsLength: 16 });
+    expect(EventListWrapper.find(Event)).toHaveLength(16);
   });
 });

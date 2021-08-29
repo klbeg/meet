@@ -77,6 +77,37 @@ describe('<App /> integration', () => {
     const EventsListWrapper = AppWrapper.find(EventList);
     const EventWrapper = EventsListWrapper.find(Event);
     expect(EventWrapper.length).toBeGreaterThan(1);
+    AppWrapper.unmount();
+  });
+
+  test('App passes state.numOfEvents as a prop to EventList', () => {
+    const AppWrapper = mount(<App />);
+    const AppNumOfEventsState = AppWrapper.state('numOfEvents');
+    expect(AppNumOfEventsState).not.toEqual(undefined);
+    expect(AppWrapper.find(EventList).props().numOfEvents).toEqual(
+      AppNumOfEventsState
+    );
+    AppWrapper.unmount();
+  });
+
+  test('putting 16 into NumberOfEvents will set App.props.numOfEvents to 16', async () => {
+    const AppWrapper = mount(<App />);
+    const SetEventsLength =
+      AppWrapper.find(NumberOfEvents).find('.setEventsLength');
+    const numOfEventsChange = { target: { value: 16 } };
+    SetEventsLength.simulate('change', numOfEventsChange);
+    expect(AppWrapper.state('numOfEvents')).toEqual(16);
+    AppWrapper.unmount();
+  });
+
+  test('inputting 16 into NumberOfEvents will set EventList.props.numOfEvents to 16', async () => {
+    const AppWrapper = mount(<App />);
+    const SetEventsLength =
+      AppWrapper.find(NumberOfEvents).find('.setEventsLength');
+    const numOfEventsChange = { target: { value: 16 } };
+    SetEventsLength.simulate('change', numOfEventsChange);
+    expect(AppWrapper.find(EventList).props().numOfEvents).toEqual(16);
+    AppWrapper.unmount();
   });
 
   test('if no number of events is specified 32 events should be shown', async () => {
@@ -84,14 +115,6 @@ describe('<App /> integration', () => {
     const EventsListWrapper = AppWrapper.find(EventList);
     const EventWrapper = EventsListWrapper.find(Event);
     expect(EventWrapper).toHaveLength(32);
-  });
-
-  test('if state.numOfEvents = 16, 16 events should be shown', async () => {
-    const AppWrapper = mount(<App />);
-    const EventsListWrapper = AppWrapper.find(EventList);
-    EventsListWrapper.setState({ eventsLength: 16 });
-    const EventWrapper = EventsListWrapper.find(Event);
-    expect(EventsListWrapper.state('eventsLength')).toBe(16);
-    expect(EventWrapper).toHaveLength(16);
+    AppWrapper.unmount();
   });
 });
