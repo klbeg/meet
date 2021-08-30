@@ -18,7 +18,7 @@ class CitySearch extends Component {
   handleInputChange = (event) => {
     const value = event.target.value;
 
-    //  Ask John why indexOf.(value.toUpperCase()) > -1;
+    //  Ask why indexOf.(value.toUpperCase()) > -1;
     //  I don't know what this does, or why
     const suggestions = this.props.locations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;

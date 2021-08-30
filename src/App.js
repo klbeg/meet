@@ -14,15 +14,11 @@ class App extends Component {
     numOfEvents: 32,
   };
 
-  /*
-still getting the following error intermittently,
-this should have been solved with componentWillMount logic
-*/
   componentDidMount() {
     // this.mounted = true;
     // getEvents().then((events) => {
     //   if (this.mounted) {
-    //     this.setState({ events, locations: extractLocations(events) });
+    //     this.setState({ events: events, locations: extractLocations(events) });
     //   }
     // });
 
