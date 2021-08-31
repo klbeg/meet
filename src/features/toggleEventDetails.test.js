@@ -1,6 +1,5 @@
 import { loadFeature, defineFeature } from 'jest-cucumber';
-import { mount, shallow } from 'enzyme';
-import { extractLocations } from '../api';
+import { mount } from 'enzyme';
 
 import App from '../App';
 import Event from '../Event';
