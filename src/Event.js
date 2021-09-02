@@ -20,7 +20,11 @@ class Event extends Component {
           {` (${this.props.event.start.timeZone} Standard Time)`}
         </p>
         <p>{`${this.props.event.summary} | ${this.props.event.location}`}</p>
-        {this.state.showDetails ? <EventDetails /> : <div />}
+        {this.state.showDetails ? (
+          <EventDetails event={this.props.event} />
+        ) : (
+          <div />
+        )}
         <button
           className="show-details"
           onClick={
