@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.event-list {
+  list-style: none;
+}
+
+.event {
+  border: 1px solid black;
+}
+
+/*
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -27,7 +36,7 @@
 .App-link {
   color: #61dafb;
 }
-
+*/
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

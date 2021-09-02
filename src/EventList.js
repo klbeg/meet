@@ -9,7 +9,7 @@ class EventList extends Component {
 
   render() {
     return (
-      <ul className="EventList">
+      <ul className="event-list">
         {this.props.events
           .slice(
             0,

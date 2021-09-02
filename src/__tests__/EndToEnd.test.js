@@ -32,7 +32,7 @@ describe('show/hide an event details', () => {
   });
 
   test('user can collapse event details', async () => {
-    await page.click('.event .hide-details');
+    await page.click('.event .show-details');
     const eventDetails = await page.$('.event .event_Details');
     expect(eventDetails).toBeNull();
   });

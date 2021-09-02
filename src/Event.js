@@ -16,22 +16,20 @@ class Event extends Component {
       <div className="event">
         <h3>{this.props.event.summary}</h3>
         <p>
-          {this.props.event.start.dateTime}
+          {this.props.event.start.dateTime.slice(0, 10)}
           {` (${this.props.event.start.timeZone} Standard Time)`}
         </p>
         <p>{`${this.props.event.summary} | ${this.props.event.location}`}</p>
         {this.state.showDetails ? <EventDetails /> : <div />}
         <button
           className="show-details"
-          onClick={() => this.handleShowDetails(true)}
+          onClick={
+            !this.state.showDetails
+              ? () => this.handleShowDetails(true)
+              : () => this.handleShowDetails(false)
+          }
         >
           Show Details
-        </button>
-        <button
-          className="hide-details"
-          onClick={() => this.handleShowDetails(false)}
-        >
-          Hide Details
         </button>
       </div>
     );

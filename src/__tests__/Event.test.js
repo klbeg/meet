@@ -24,7 +24,7 @@ describe('<EventDetails /> component', () => {
 
   test('while details are expanded, clicking showDetails button will collapse details', () => {
     EventWrapper.setState({ showDetails: true });
-    EventWrapper.find('.hide-details').simulate('click');
+    EventWrapper.find('.show-details').simulate('click');
     expect(EventWrapper.find(EventDetails)).toHaveLength(0);
   });
 });

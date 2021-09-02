@@ -64,10 +64,10 @@ defineFeature(feature, (test) => {
       ).toHaveLength(1);
     });
 
-    when('The user clicks the hide-details button', () => {
+    when('The user clicks the show-details button', () => {
       AppWrapper.setState({ numOfEvents: 1 });
       EventWrapper = AppWrapper.find(EventList).find(Event);
-      EventWrapper.find('.hide-details').simulate('click');
+      EventWrapper.find('.show-details').simulate('click');
     });
 
     then('The event details should be collapsed', () => {
