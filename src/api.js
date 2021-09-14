@@ -18,20 +18,21 @@ const getToken = async (code) => {
   })
     .then((res) => {
       console.log('getToken response: ', res.json());
-      return res.json();
+      localStorage.setItem('access_token', res.json);
+      // return res.json();
     })
     .catch((error) => error);
 
-  console.log('*token post responese: ', access_token);
-  access_token && localStorage.setItem('access_token', access_token);
+  console.log('post request token: ', localStorage.getItem(access_token));
+  // access_token && localStorage.setItem('access_token', access_token);
 
-  return access_token;
+  // return access_token;
 };
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
-  const tokenCheck = accessToken && (await checkToken(accessToken));
-
+  //const tokenCheck = accessToken && (await checkToken(accessToken));
+  const tokenCheck = localStorage.getItem('access_token');
   if (!accessToken || tokenCheck.error) {
     await localStorage.removeItem('access_token');
     const searchParams = new URLSearchParams(window.location.search);
