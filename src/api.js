@@ -2,7 +2,7 @@ import axios from 'axios';
 import './nprogress.css';
 import NProgress from 'nprogress';
 
-import { mockData } from './mock-data';
+// import { mockData } from './mock-data';
 
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
@@ -81,9 +81,9 @@ export const getEvents = async () => {
   NProgress.start();
 
   if (window.location.href.startsWith('http://localhost')) {
-    NProgress.done();
-    return mockData;
-  }
+  //   NProgress.done();
+  //   return mockData;
+  // }
 
   if (!navigator.onLine) {
     let events;

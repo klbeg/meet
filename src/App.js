@@ -4,7 +4,7 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { mockData } from './mock-data';
+// import { mockData } from './mock-data';
 import { extractLocations, getEvents } from './api';
 
 class App extends Component {
