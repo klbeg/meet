@@ -22,11 +22,11 @@ class App extends Component {
       }
     });
 
-    this.mounted = true;
-    this.setState({
-      events: mockData,
-      locations: extractLocations(mockData),
-    });
+    // this.mounted = true;
+    // this.setState({
+    //   events: mockData,
+    //   locations: extractLocations(mockData),
+    // });
   }
 
   componentWillUnmount() {
@@ -49,13 +49,13 @@ class App extends Component {
         events: locationEvents,
       });
     });
-    const locationEvents =
-      location === 'all'
-        ? mockData
-        : mockData.filter((event) => event.location === location);
-    this.setState({
-      events: locationEvents,
-    });
+    // const locationEvents =
+    //   location === 'all'
+    //     ? mockData
+    //     : mockData.filter((event) => event.location === location);
+    // this.setState({
+    //   events: locationEvents,
+    // });
   };
 
   render() {
