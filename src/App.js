@@ -5,7 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { mockData } from './mock-data';
-import { extractLocations /* getEvents */ } from './api';
+import { extractLocations, getEvents } from './api';
 
 class App extends Component {
   state = {
@@ -15,12 +15,12 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // this.mounted = true;
-    // getEvents().then((events) => {
-    //   if (this.mounted) {
-    //     this.setState({ events: events, locations: extractLocations(events) });
-    //   }
-    // });
+    this.mounted = true;
+    getEvents().then((events) => {
+      if (this.mounted) {
+        this.setState({ events: events, locations: extractLocations(events) });
+      }
+    });
 
     this.mounted = true;
     this.setState({
@@ -40,15 +40,15 @@ class App extends Component {
   };
 
   updateEvents = (location) => {
-    // getEvents().then((events) => {
-    //   const locationEvents =
-    //     location === 'all'
-    //       ? events
-    //       : events.filter((event) => event.location === location);
-    //   this.setState({
-    //     events: locationEvents,
-    //   });
-    // });
+    getEvents().then((events) => {
+      const locationEvents =
+        location === 'all'
+          ? events
+          : events.filter((event) => event.location === location);
+      this.setState({
+        events: locationEvents,
+      });
+    });
     const locationEvents =
       location === 'all'
         ? mockData
