@@ -15,8 +15,8 @@ const getToken = async (code) => {
     .catch((error) => {
       return error;
     });
-  console.log('getToken - access_token', access_token);
   localStorage.setItem('access_token', access_token);
+  return access_token;
 };
 
 export const getAccessToken = async () => {
