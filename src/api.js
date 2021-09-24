@@ -97,7 +97,7 @@ export const getEvents = async () => {
   }
 
   const token = await getAccessToken();
-
+  console.log('token in getEvents: ', token);
   if (token) {
     removeQuery();
     const url =
