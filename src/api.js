@@ -3,7 +3,6 @@ import './nprogress.css';
 import NProgress from 'nprogress';
 
 import { mockData } from './mock-data';
-import { ConsoleMessage } from 'puppeteer';
 
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
