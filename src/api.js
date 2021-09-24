@@ -3,6 +3,7 @@ import './nprogress.css';
 import NProgress from 'nprogress';
 
 import { mockData } from './mock-data';
+import { ConsoleMessage } from 'puppeteer';
 
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
@@ -104,6 +105,7 @@ export const getEvents = async () => {
     const result = await axios.get(url);
     console.log(result.data);
     if (result.data) {
+      console.log(result.data.items);
       var locations = extractLocations(result.data.items);
       localStorage.setItem('lastEvents', JSON.stringify(result.data.items));
       localStorage.setItem('locations', JSON.stringify(locations));
