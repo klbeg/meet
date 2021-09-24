@@ -13,14 +13,12 @@ const getToken = async (code) => {
 
   const { access_token } = await fetch(getTokenUrl + '/' + encodeCode)
     .then((res) => {
-      console.log('getToken response: ', res.json());
-      localStorage.setItem('access_token', res.json);
+      return res.json();
     })
     .catch((error) => {
-      console.log('getToken catch: ', error);
       return error;
     });
-  console.log('access token variable: ', access_token);
+  localStorage.setItem('access_token', access_token);
 };
 
 export const getAccessToken = async () => {
