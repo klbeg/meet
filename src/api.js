@@ -102,11 +102,11 @@ export const getEvents = async () => {
       token;
     console.log('url in getEvents: ', url);
     const result = await axios.get(url);
-    console.log('results.data: ', result.data.events.data.items);
-    if (result.data) {
+    let results = result.data.events.data.items;
+    if (results) {
       console.log('if results.data √');
-      var locations = extractLocations(result.data.items);
-      localStorage.setItem('lastEvents', JSON.stringify(result.data.items));
+      var locations = extractLocations(results);
+      localStorage.setItem('lastEvents', JSON.stringify(results));
       localStorage.setItem('locations', JSON.stringify(locations));
     }
     NProgress.done();
