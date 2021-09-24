@@ -24,7 +24,6 @@ const getToken = async (code) => {
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
-  console.log('getAccessToken accessToken: ', accessToken);
   const tokenCheck = localStorage.getItem('access_token');
   if (!accessToken || tokenCheck.error) {
     await localStorage.removeItem('access_token');
@@ -39,6 +38,7 @@ export const getAccessToken = async () => {
     }
     return code && getToken(code);
   }
+  console.log('getAccessToken - accessToken: ', accessToken);
   return accessToken;
 };
 
