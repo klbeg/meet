@@ -8,9 +8,6 @@ const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const getTokenUrl =
     'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/token';
-
-  console.log('getToken called, "encodeCode" updated: ', encodeCode);
-
   const { access_token } = await fetch(getTokenUrl + '/' + encodeCode)
     .then((res) => {
       return res.json();
@@ -38,7 +35,6 @@ export const getAccessToken = async () => {
     }
     return code && getToken(code);
   }
-  console.log('getAccessToken - accessToken: ', accessToken);
   return accessToken;
 };
 
