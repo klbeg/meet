@@ -100,12 +100,12 @@ export const getEvents = async () => {
       'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/get-events' +
       '/' +
       token;
-    console.lot('url in getEvents: ', url);
+    console.log('url in getEvents: ', url);
     const result = await axios.get(url);
     console.log(result.data);
     if (result.data) {
-      var locations = extractLocations(result.data.events);
-      localStorage.setItem('lastEvents', JSON.stringify(result.data));
+      var locations = extractLocations(result.data.items);
+      localStorage.setItem('lastEvents', JSON.stringify(result.data.items));
       localStorage.setItem('locations', JSON.stringify(locations));
     }
     NProgress.done();
