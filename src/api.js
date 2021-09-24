@@ -18,6 +18,7 @@ const getToken = async (code) => {
     .catch((error) => {
       return error;
     });
+  console.log('getToken - access_token', access_token);
   localStorage.setItem('access_token', access_token);
 };
 
@@ -104,6 +105,7 @@ export const getEvents = async () => {
       '/' +
       'token';
     const result = await axios.get(url);
+    console.log(result.data);
     if (result.data) {
       var locations = extractLocations(result.data.events);
       localStorage.setItem('lastEvents', JSON.stringify(result.data));
