@@ -1,5 +1,4 @@
 const { google } = require('googleapis');
-const OAuth2 = google.auth.OAuth2;
 const calendar = google.calendar('v3');
 
 const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
@@ -33,6 +32,7 @@ module.exports.getAuthURL = async () => {
     statusCode: 200,
     headers: {
       'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       authUrl: authUrl,
@@ -61,6 +61,7 @@ module.exports.getAccessToken = async (event) => {
         statusCode: 200,
         headers: {
           'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(token),
       };
@@ -110,6 +111,7 @@ module.exports.getCalendarEvents = async (event) => {
         statusCode: 200,
         headers: {
           'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ events: events }),
       };

@@ -2,7 +2,7 @@ import axios from 'axios';
 import './nprogress.css';
 import NProgress from 'nprogress';
 
-// import { mockData } from './mock-data';
+import { mockData } from './mock-data';
 
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
@@ -11,20 +11,21 @@ const getToken = async (code) => {
 
   console.log('getToken called, "encodeCode" updated: ', encodeCode);
 
-  const { access_token } = await fetch(getTokenUrl + '/' + encodeCode, {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
-  })
+  const { access_token } = await fetch(getTokenUrl + '/' + encodeCode)
     .then((res) => {
       console.log('getToken response: ', res.json());
       localStorage.setItem('access_token', res.json);
     })
-    .catch((error) => error);
+    .catch((error) => {
+      console.log('getToken catch: ', error);
+      return error;
+    });
+  console.log('access token variable: ', access_token);
 };
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
+  console.log('getAccessToken accessToken: ', accessToken);
   const tokenCheck = localStorage.getItem('access_token');
   if (!accessToken || tokenCheck.error) {
     await localStorage.removeItem('access_token');
@@ -48,20 +49,22 @@ export const extractLocations = (events) => {
   return locations;
 };
 
-const checkToken = async (accessToken) => {
-  const result = await fetch(
-    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`,
-    {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-    }
-  )
-    .then((res) => res.json())
-    .catch((error) => error.json());
+//  currently unsure where I got this function
 
-  return result;
-};
+// const checkToken = async (accessToken) => {
+//   const result = await fetch(
+//     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`,
+//     {
+//       headers: {
+//         'Access-Control-Allow-Origin': '*',
+//       },
+//     }
+//   )
+//     .then((res) => res.json())
+//     .catch((error) => error.json());
+
+//   return result;
+// };
 
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
@@ -78,15 +81,17 @@ const removeQuery = () => {
 };
 
 export const getEvents = async () => {
+  console.log('getEvents called');
   NProgress.start();
 
   if (window.location.href.startsWith('http://localhost')) {
-  //   NProgress.done();
-  //   return mockData;
-  // }
+    NProgress.done();
+    return mockData;
+  }
 
   if (!navigator.onLine) {
     let events;
+    console.log('page appearing offline');
     const data = localStorage.getItem('lastEvents');
     NProgress.done();
     return data ? JSON.parse(events).events : [];
@@ -100,11 +105,7 @@ export const getEvents = async () => {
       'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/get-events' +
       '/' +
       'token';
-    const result = await axios.get(url, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-    });
+    const result = await axios.get(url);
     if (result.data) {
       var locations = extractLocations(result.data.events);
       localStorage.setItem('lastEvents', JSON.stringify(result.data));
