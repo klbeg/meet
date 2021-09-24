@@ -100,6 +100,7 @@ export const getEvents = async () => {
       'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/get-events' +
       '/' +
       token;
+    console.lot('url in getEvents: ', url);
     const result = await axios.get(url);
     console.log(result.data);
     if (result.data) {
