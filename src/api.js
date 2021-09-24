@@ -102,7 +102,7 @@ export const getEvents = async () => {
       token;
     console.log('url in getEvents: ', url);
     const result = await axios.get(url);
-    console.log(result.data);
+    console.log('results.data: ', result.data.events.data.items);
     if (result.data) {
       console.log('if results.data √');
       var locations = extractLocations(result.data.items);
