@@ -79,10 +79,10 @@ export const getEvents = async () => {
   console.log('getEvents called');
   NProgress.start();
 
-  if (window.location.href.startsWith('http://localhost')) {
+  /*  if (window.location.href.startsWith('http://localhost')) {
     NProgress.done();
     return mockData;
-  }
+  } */
 
   if (!navigator.onLine) {
     let events;
@@ -104,7 +104,7 @@ export const getEvents = async () => {
     const result = await axios.get(url);
     console.log(result.data);
     if (result.data) {
-      console.log('getEvents result.data: ', result.events.data.items);
+      console.log('if results.data √');
       var locations = extractLocations(result.data.items);
       localStorage.setItem('lastEvents', JSON.stringify(result.data.items));
       localStorage.setItem('locations', JSON.stringify(locations));
