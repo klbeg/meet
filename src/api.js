@@ -104,7 +104,7 @@ export const getEvents = async () => {
     const result = await axios.get(url);
     console.log(result.data);
     if (result.data) {
-      console.log('getEvents result.data: ', result.data);
+      console.log('getEvents result.data: ', result.data.events.data.items);
       var locations = extractLocations(result.data.items);
       localStorage.setItem('lastEvents', JSON.stringify(result.data.items));
       localStorage.setItem('locations', JSON.stringify(locations));
