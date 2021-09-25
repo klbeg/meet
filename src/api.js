@@ -16,6 +16,7 @@ const getToken = async (code) => {
       return error;
     });
   localStorage.setItem('access_token', access_token);
+  console.log('access_token set in localStorage');
   return access_token;
 };
 
