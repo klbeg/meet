@@ -93,7 +93,7 @@ export const getEvents = async () => {
       console.log(JSON.parse(data));
       return JSON.parse(data);
     }
-    //return data ? JSON.parse(events).events : [];
+    return data ? JSON.parse(data) : [];
   }
 
   const token = await getAccessToken();
