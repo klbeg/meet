@@ -59,7 +59,6 @@ const removeQuery = () => {
 };
 
 export const getEvents = async () => {
-  console.log('getEvents called');
   NProgress.start();
 
   if (window.location.href.startsWith('http://localhost')) {
@@ -72,7 +71,6 @@ export const getEvents = async () => {
     const data = localStorage.getItem('lastEvents');
     NProgress.done();
     if (data) {
-      console.log(JSON.parse(data));
       return JSON.parse(data);
     }
     return data ? JSON.parse(data) : [];
@@ -86,17 +84,14 @@ export const getEvents = async () => {
       'https://309jzcntd7.execute-api.us-east-2.amazonaws.com/dev/api/get-events' +
       '/' +
       token;
-    console.log('url in getEvents: ', url);
     const result = await axios.get(url);
     let results = result.data.events.data.items;
     if (results) {
-      console.log('if results.data √: ', results);
       var locations = extractLocations(results);
       localStorage.setItem('lastEvents', JSON.stringify(results));
       localStorage.setItem('locations', JSON.stringify(locations));
     }
     NProgress.done();
-    console.log('return getEvents > results.data.events: ', results);
     return results;
   }
 };
