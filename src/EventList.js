@@ -11,7 +11,9 @@ class EventList extends Component {
   render() {
     return (
       <div className="event-list-container">
-        <InfoAlert text="This page is appearing offline." />
+        <InfoAlert
+          text={!navigator.online ? 'This page is appearing offline.' : ''}
+        />
         <ul className="event-list">
           {this.props.events
             .slice(
