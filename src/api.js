@@ -113,7 +113,7 @@ export const getEvents = async () => {
       localStorage.setItem('locations', JSON.stringify(locations));
     }
     NProgress.done();
-    console.log('return getEvents > results.data.events: ', result.data.events);
-    return result.data.events;
+    console.log('return getEvents > results.data.events: ', results);
+    return results;
   }
 };
