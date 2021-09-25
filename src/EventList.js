@@ -11,7 +11,7 @@ class EventList extends Component {
   render() {
     return (
       <div className="event-list-container">
-        <InfoAlert>Page is appearing offline</InfoAlert>
+        <InfoAlert text="This page is appearing offline." />
         <ul className="event-list">
           {this.props.events
             .slice(
