@@ -4,7 +4,6 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-// import { mockData } from './mock-data';
 import { extractLocations, getEvents } from './api';
 
 class App extends Component {
@@ -23,12 +22,6 @@ class App extends Component {
         this.setState({ events: events, locations: extractLocations(events) });
       }
     });
-
-    // this.mounted = true;
-    // this.setState({
-    //   events: mockData,
-    //   locations: extractLocations(mockData),
-    // });
   }
 
   componentWillUnmount() {
@@ -51,13 +44,6 @@ class App extends Component {
         events: locationEvents,
       });
     });
-    // const locationEvents =
-    //   location === 'all'
-    //     ? mockData
-    //     : mockData.filter((event) => event.location === location);
-    // this.setState({
-    //   events: locationEvents,
-    // });
   };
 
   render() {

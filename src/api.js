@@ -44,23 +44,6 @@ export const extractLocations = (events) => {
   return locations;
 };
 
-//  currently unsure where I got this function
-
-// const checkToken = async (accessToken) => {
-//   const result = await fetch(
-//     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`,
-//     {
-//       headers: {
-//         'Access-Control-Allow-Origin': '*',
-//       },
-//     }
-//   )
-//     .then((res) => res.json())
-//     .catch((error) => error.json());
-
-//   return result;
-// };
-
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
     var newurl =
@@ -79,10 +62,10 @@ export const getEvents = async () => {
   console.log('getEvents called');
   NProgress.start();
 
-  /*  if (window.location.href.startsWith('http://localhost')) {
+  if (window.location.href.startsWith('http://localhost')) {
     NProgress.done();
     return mockData;
-  } */
+  }
 
   if (!navigator.onLine) {
     console.log('page appearing offline');
