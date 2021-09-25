@@ -85,7 +85,6 @@ export const getEvents = async () => {
   } */
 
   if (!navigator.onLine) {
-    let events;
     console.log('page appearing offline');
     const data = localStorage.getItem('lastEvents');
     NProgress.done();
@@ -114,6 +113,7 @@ export const getEvents = async () => {
       localStorage.setItem('locations', JSON.stringify(locations));
     }
     NProgress.done();
+    console.log('return getEvents > results.data.events: ', result.data.events);
     return result.data.events;
   }
 };
