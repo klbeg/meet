@@ -17,7 +17,7 @@ class App extends Component {
   componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
-      console.log('getEvents called from App.js');
+      console.log('events in componentDidMount: ', events);
       if (this.mounted) {
         this.setState({ events: events, locations: extractLocations(events) });
       }
