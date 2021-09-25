@@ -89,7 +89,10 @@ export const getEvents = async () => {
     console.log('page appearing offline');
     const data = localStorage.getItem('lastEvents');
     NProgress.done();
-    return data ? JSON.parse(events).events : [];
+    if (data) {
+      return JSON.parse(data).events;
+    }
+    //return data ? JSON.parse(events).events : [];
   }
 
   const token = await getAccessToken();
