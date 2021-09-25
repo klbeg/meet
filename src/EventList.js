@@ -12,7 +12,7 @@ class EventList extends Component {
     return (
       <div className="event-list-container">
         <InfoAlert
-          text={!navigator.online ? 'This page is appearing offline.' : ''}
+          text={!navigator.onLine ? 'This page is appearing offline.' : ''}
         />
         <ul className="event-list">
           {this.props.events
