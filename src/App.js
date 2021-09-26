@@ -17,6 +17,11 @@ class App extends Component {
 
   componentDidMount() {
     this.mounted = true;
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = checkToken(accessToken).error ? false : true;
+    //const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get('code');
 
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
 
@@ -30,11 +35,6 @@ class App extends Component {
         }
       });
     }
-    const accessToken = localStorage.getItem('access_token');
-    const isTokenValid = checkToken(accessToken).error ? false : true;
-    //const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-    const searchParams = new URLSearchParams(window.location.search);
-    const code = searchParams.get('code');
   }
 
   componentWillUnmount() {
