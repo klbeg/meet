@@ -15,11 +15,11 @@ class App extends Component {
     showWelcomeScreen: undefined,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
     const accessToken = localStorage.getItem('access_token');
     //  in lesson code is: await checkToken...
-    const isTokenValid = checkToken(accessToken).error ? false : true;
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get('code');
 
