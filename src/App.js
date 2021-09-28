@@ -16,7 +16,7 @@ import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 
-class App extends Component {
+class App extends PureComponent {
   state = {
     events: [],
     locations: [],
@@ -29,7 +29,6 @@ class App extends Component {
     const accessToken = localStorage.getItem('access_token');
     //  in lesson code is: await checkToken...
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-    console.log(isTokenValid);
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get('code');
 
