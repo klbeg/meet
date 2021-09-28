@@ -2,6 +2,8 @@ import React, { Component, PureComponent } from 'react';
 import {
   ScatterChart,
   Scatter,
+  PieChart,
+  Pie,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -10,6 +12,7 @@ import {
 } from 'recharts';
 
 import './App.css';
+import EventGenre from './EventGenre';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
@@ -50,7 +53,7 @@ class App extends Component {
     this.mounted = false;
   }
 
-  getData = () => {
+  getScatterData = () => {
     const { locations, events } = this.state;
     const data = locations.map((location) => {
       const number = events.filter(
@@ -82,6 +85,7 @@ class App extends Component {
   };
 
   render() {
+    const { locations, numberOfEvents, events } = this.state;
     if (this.state.showWelcomeScreen === undefined)
       return <div className="App" />;
     return (
@@ -91,29 +95,32 @@ class App extends Component {
           updateEvents={this.updateEvents}
         />
         <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
-        <ResponsiveContainer height={400}>
-          <ScatterChart
-            width={800}
-            height={400}
-            margin={{
-              top: 20,
-              right: 20,
-              bottom: 20,
-              left: 20,
-            }}
-          >
-            <CartesianGrid />
-            <XAxis type="category" dataKey="city" name="city" />
-            <YAxis
-              type="number"
-              dataKey="number"
-              name="number of events"
-              allowDecimals={false}
-            />
-            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-            <Scatter data={this.getData()} fill="#8884d8" />
-          </ScatterChart>
-        </ResponsiveContainer>
+        <div className="data-vis-wrapper">
+          <EventGenre events={events} />
+          <ResponsiveContainer height={400}>
+            <ScatterChart
+              width={800}
+              height={400}
+              margin={{
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 20,
+              }}
+            >
+              <CartesianGrid />
+              <XAxis type="category" dataKey="city" name="city" />
+              <YAxis
+                type="number"
+                dataKey="number"
+                name="number of events"
+                allowDecimals={false}
+              />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              <Scatter data={this.getScatterData()} fill="#8884d8" />
+            </ScatterChart>
+          </ResponsiveContainer>
+        </div>
         <EventList
           events={this.state.events}
           numOfEvents={this.state.numOfEvents}
