@@ -16,7 +16,7 @@ import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 
-class App extends PureComponent {
+class App extends Component {
   state = {
     events: [],
     locations: [],
