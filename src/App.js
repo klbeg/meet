@@ -113,11 +113,11 @@ class App extends Component {
             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
             <Scatter data={this.getData()} fill="#8884d8" />
           </ScatterChart>
-          <EventList
-            events={this.state.events}
-            numOfEvents={this.state.numOfEvents}
-          />
         </ResponsiveContainer>
+        <EventList
+          events={this.state.events}
+          numOfEvents={this.state.numOfEvents}
+        />
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {
