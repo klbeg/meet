@@ -1,9 +1,7 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component } from 'react';
 import {
   ScatterChart,
   Scatter,
-  PieChart,
-  Pie,
   XAxis,
   YAxis,
   CartesianGrid,
