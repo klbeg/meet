@@ -19,6 +19,8 @@ import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 
+import mockData from './mock-data';
+
 class App extends Component {
   state = {
     events: [],
