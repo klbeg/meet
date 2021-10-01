@@ -19,14 +19,14 @@ import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 
-import mockData from './mock-data';
+import { mockData } from './mock-data';
 
 class App extends Component {
   state = {
     events: [],
     locations: [],
     numOfEvents: 32,
-    showWelcomeScreen: undefined,
+    showWelcomeScreen: false,
   };
 
   async componentDidMount() {
@@ -37,16 +37,10 @@ class App extends Component {
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get('code');
 
-    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-
-    if ((code || isTokenValid) && this.mounted) {
-      getEvents().then((events) => {
-        if (this.mounted) {
-          this.setState({
-            events: events,
-            locations: extractLocations(events),
-          });
-        }
+    if (this.mounted) {
+      this.setState({
+        events: mockData,
+        locations: extractLocations(mockData),
       });
     }
   }
