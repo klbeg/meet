@@ -22,7 +22,7 @@ class NumberOfEvents extends Component {
     return (
       <div className="NumberOfEvents">
         <label className="input-label" for="set-events-length">
-          Set list length
+          Number of events
         </label>
         <input
           id="set-events-length"

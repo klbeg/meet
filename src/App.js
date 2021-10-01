@@ -11,6 +11,7 @@ import {
 
 import './App.scss';
 import EventGenre from './EventGenre';
+import Header from './Header';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
@@ -84,11 +85,14 @@ class App extends Component {
       return <div className="App" />;
     return (
       <div className="App">
-        <CitySearch
-          locations={this.state.locations}
-          updateEvents={this.updateEvents}
-        />
-        <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
+        <Header />
+        {/* <div className="list-modifier-container">
+          <CitySearch
+            locations={this.state.locations}
+            updateEvents={this.updateEvents}
+          />
+          <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
+        </div> */}
         {/* <div className="data-vis-wrapper">
           <EventGenre events={events} />
           <ResponsiveContainer height={400}>
