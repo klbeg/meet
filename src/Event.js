@@ -13,7 +13,7 @@ class Event extends Component {
 
   render() {
     return (
-      <div className="event">
+      <div className={this.state.showDetails ? 'event' : 'event short'}>
         <h3>{this.props.event.summary}</h3>
         <p>
           {this.props.event.start.dateTime.slice(0, 10)}

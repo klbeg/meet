@@ -1,9 +1,7 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component } from 'react';
 import {
   ScatterChart,
   Scatter,
-  PieChart,
-  Pie,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -91,7 +89,7 @@ class App extends Component {
           updateEvents={this.updateEvents}
         />
         <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
-        <div className="data-vis-wrapper">
+        {/* <div className="data-vis-wrapper">
           <EventGenre events={events} />
           <ResponsiveContainer height={400}>
             <ScatterChart
@@ -116,7 +114,7 @@ class App extends Component {
               <Scatter data={this.getScatterData()} fill="#8884d8" />
             </ScatterChart>
           </ResponsiveContainer>
-        </div>
+        </div> */}
         <EventList
           events={this.state.events}
           numOfEvents={this.state.numOfEvents}

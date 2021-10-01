@@ -14,7 +14,7 @@ class EventList extends Component {
         <InfoAlert
           text={!navigator.onLine ? 'This page is appearing offline.' : ''}
         />
-        <ul className="event-list">
+        <div className="event-list">
           {this.props.events
             .slice(
               0,
@@ -22,13 +22,12 @@ class EventList extends Component {
                 ? this.props.numOfEvents
                 : this.state.eventsLength
             )
-            .map((event, i) => (
-              <li key={event.id}>
-                <span>{i}</span>
+            .map((event) => (
+              <div class="event-container" key={event.id}>
                 <Event event={event} />
-              </li>
+              </div>
             ))}
-        </ul>
+        </div>
       </div>
     );
   }
