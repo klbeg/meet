@@ -24,7 +24,6 @@ class EventList extends Component {
             )
             .map((event, i) => (
               <li key={event.id}>
-                <span>{i}</span>
                 <Event event={event} />
               </li>
             ))}
