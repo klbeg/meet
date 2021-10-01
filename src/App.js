@@ -11,7 +11,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-import './App.css';
+import './App.scss';
 import EventGenre from './EventGenre';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
