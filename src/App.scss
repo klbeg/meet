@@ -1,4 +1,4 @@
-$color1: rgba(138, 66, 138, 0.356);
+$color1: rgba(255, 255, 255, 0.356);
 $color2: rgb(94, 6, 94);
 * {
   margin: 0;
@@ -40,6 +40,16 @@ label {
     width: 200px;
     align-self: center;
   }
+}
+
+// Chart Styling
+.data-vis-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.recharts-wrapper {
+  display: flex;
 }
 
 // Number Of Events and City Search styling
