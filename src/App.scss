@@ -43,8 +43,15 @@ label {
 }
 
 // Chart Styling
+.data-vis-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 .recharts-surface {
   overflow: visible;
+  width: 400px;
 }
 .recharts-layer {
   font-weight: bold;
@@ -119,6 +126,12 @@ label {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .data-vis-wrapper {
+    flex-direction: row;
   }
 }
 
