@@ -11,7 +11,6 @@ import {
 
 import './App.scss';
 import EventGenre from './EventGenre';
-import Header from './Header';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
