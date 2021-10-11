@@ -94,7 +94,6 @@ class App extends Component {
           <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
         </div> */}
         <div className="data-vis-wrapper">
-          <EventGenre events={events} />
           <ResponsiveContainer height={300} width={400}>
             <ScatterChart
               width={50}
@@ -111,9 +110,10 @@ class App extends Component {
                 type="category"
                 dataKey="city"
                 name="city"
+                angle="45"
                 label={{
                   value: 'City',
-                  position: 'insideBottomCenter',
+                  position: 'bottom',
                   dy: 20,
                 }}
               />
@@ -133,6 +133,7 @@ class App extends Component {
               <Scatter data={this.getScatterData()} fill="#8884d8" />
             </ScatterChart>
           </ResponsiveContainer>
+          <EventGenre events={events} />
         </div>
         <EventList
           events={this.state.events}
