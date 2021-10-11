@@ -95,6 +95,10 @@ label {
   margin: 10px;
 }
 .event {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-between;
   border: 2px solid black;
   background-color: white;
   padding: 10px;
@@ -106,10 +110,12 @@ label {
   }
 }
 .short {
-  height: 85px;
+  height: 100px;
 }
 .show-details {
-  margin-top: 10px;
+  display: flex;
+
+  margin: 0 auto 0;
   font-size: 11px;
   padding: 5px;
   font-weight: bold;

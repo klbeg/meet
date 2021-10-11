@@ -41,6 +41,16 @@ class App extends Component {
         locations: extractLocations(mockData),
       });
     }
+    // if ((code || isTokenValid) && this.mounted) {
+    //   getEvents().then((events) => {
+    //     if (this.mounted) {
+    //       this.setState({
+    //         events: events,
+    //         locations: extractLocations(events),
+    //       });
+    //     }
+    //   });
+    // }
   }
 
   componentWillUnmount() {
