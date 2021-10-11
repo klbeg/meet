@@ -85,14 +85,13 @@ class App extends Component {
       return <div className="App" />;
     return (
       <div className="App">
-        <Header />
-        {/* <div className="list-modifier-container">
+        <div className="list-modifier-container">
           <CitySearch
             locations={this.state.locations}
             updateEvents={this.updateEvents}
           />
           <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
-        </div> */}
+        </div>
         <div className="data-vis-wrapper">
           <ResponsiveContainer height={300} width={400}>
             <ScatterChart
