@@ -30,7 +30,6 @@ class App extends Component {
   async componentDidMount() {
     this.mounted = true;
     const accessToken = localStorage.getItem('access_token');
-    //  in lesson code is: await checkToken...
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get('code');
@@ -41,6 +40,9 @@ class App extends Component {
         locations: extractLocations(mockData),
       });
     }
+
+    // this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+
     // if ((code || isTokenValid) && this.mounted) {
     //   getEvents().then((events) => {
     //     if (this.mounted) {
