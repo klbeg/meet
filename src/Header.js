@@ -6,7 +6,7 @@ import NumberOfEvents from './NumberOfEvents';
 class Header extends Component {
   render() {
     return (
-      <div className="Header">
+      <div className="header">
         <h1>Social Dev</h1>
         <div className="list-modifier-container">
           <NumberOfEvents />

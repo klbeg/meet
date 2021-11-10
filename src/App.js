@@ -96,53 +96,17 @@ class App extends Component {
       return <div className="App" />;
     return (
       <div className="App">
+        <div>
+          <h1>Social Dev</h1>
+        </div>
         <div className="list-modifier-container">
+          <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
           <CitySearch
             locations={this.state.locations}
             updateEvents={this.updateEvents}
           />
-          <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
         </div>
         <div className="data-vis-wrapper">
-          <ResponsiveContainer height={300} width={400}>
-            <ScatterChart
-              width={50}
-              height={20}
-              margin={{
-                top: 20,
-                right: 20,
-                bottom: 20,
-                left: 20,
-              }}
-            >
-              <CartesianGrid />
-              <XAxis
-                type="category"
-                dataKey="city"
-                name="city"
-                angle="45"
-                label={{
-                  value: 'City',
-                  position: 'bottom',
-                  dy: 20,
-                }}
-              />
-              <YAxis
-                type="number"
-                dataKey="number"
-                name="number of events"
-                allowDecimals={false}
-                label={{
-                  value: 'Number of events',
-                  angle: -90,
-                  position: 'insideCenter',
-                  dx: -10,
-                }}
-              />
-              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-              <Scatter data={this.getScatterData()} fill="#8884d8" />
-            </ScatterChart>
-          </ResponsiveContainer>
           <EventGenre events={events} />
         </div>
         <EventList
