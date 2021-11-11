@@ -1,7 +1,13 @@
-$color1: rgba(255, 255, 255, 0.856);
-$color2: rgb(94, 6, 94);
+$color1: rgba(214, 192, 179, 0.836);
+$color2: rgb(245, 242, 233);
+$color3: rgb(94, 6, 94);
+$color4: rgb(51, 21, 51);
+$color5: rgba(206, 143, 65, 0.76);
+$clear: rgba(255, 255, 255, 0);
 * {
   margin: 0;
+  color: $color4;
+  font-size: 15px;
 }
 html {
   background-image: url('./img/background-image.jpg');
@@ -24,12 +30,12 @@ h1 {
   margin: 25px;
   min-height: 100vh;
 }
-input,
+// input,
+// label {
+//   font-size: 15px;
+// }
 label {
-  font-size: 14px;
-}
-label {
-  color: white;
+  color: $color2;
   font-weight: bold;
   display: flex;
 }
@@ -43,7 +49,7 @@ label {
 
   h1 {
     width: 200px;
-    color: black;
+    color: $color4;
     align-self: center;
   }
 }
@@ -69,14 +75,16 @@ label {
   justify-content: space-around;
   padding: 10px;
 }
-#set-events-length {
-  width: 150px;
-  height: 20px;
-}
+#set-events-length,
 #city-search {
   height: 20px;
   width: 150px;
   position: relative;
+  background-color: $color5;
+  padding: 3px 0 3px 7px;
+  font-weight: bold;
+  border: 2px solid $color4;
+  border-radius: 3px 3px 0 0;
 }
 .NumberOfEvents,
 .CitySearch {
@@ -85,19 +93,21 @@ label {
   position: relative;
 
   label {
-    color: black;
+    color: $color4;
   }
 }
 .suggestions {
   list-style: none;
   position: absolute;
   z-index: 100;
-  top: 43px;
-  left: 2px;
-  width: 150px;
-  background-color: white;
-  color: black;
+  top: 46px;
+  left: 0px;
+  width: 157px;
+  padding: 3px 0;
+  background-color: $color5;
+  color: $color4;
   border-radius: 0 0 2px 2px;
+  border: 2px solid $color4;
 }
 .suggestions:hover {
   cursor: pointer;
@@ -117,10 +127,11 @@ label {
   flex-direction: column;
   // position: relative;
   justify-content: space-between;
-  border: 2px solid black;
-  background-color: white;
+  border: 4px solid $color4;
+  background-color: $color5;
   padding: 10px;
   border-radius: 3px;
+  font-size: 15px;
 
   h3 {
     font-size: 18px;
@@ -132,14 +143,22 @@ label {
 }
 .show-details {
   display: flex;
-
   margin: 0 auto 0;
-  font-size: 11px;
+  font-size: 13px;
   padding: 5px;
   font-weight: bold;
+  color: $color2;
+  background-color: $color3;
+  border: 2px solid $color4;
+  border-radius: 5px;
+  transition: color 0.5s, background-color 0.5s;
+}
+.show-details:hover {
+  color: $color4;
+  background-color: $clear;
 }
 .event-details {
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 //

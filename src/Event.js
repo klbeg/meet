@@ -33,7 +33,7 @@ class Event extends Component {
               : () => this.handleShowDetails(false)
           }
         >
-          Show Details
+          {this.state.showDetails === false ? 'Show Details' : 'Hide Details'}
         </button>
       </div>
     );
