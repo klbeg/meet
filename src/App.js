@@ -99,15 +99,17 @@ class App extends Component {
         <div>
           <h1>Social Dev</h1>
         </div>
-        <div className="list-modifier-container">
-          <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
-          <CitySearch
-            locations={this.state.locations}
-            updateEvents={this.updateEvents}
-          />
-        </div>
-        <div className="data-vis-wrapper">
-          <EventGenre events={events} />
+        <div className="vis-modifier-container">
+          <div className="list-modifier-container">
+            <NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents} />
+            <CitySearch
+              locations={this.state.locations}
+              updateEvents={this.updateEvents}
+            />
+          </div>
+          <div className="data-vis-wrapper">
+            <EventGenre events={events} />
+          </div>
         </div>
         <EventList
           events={this.state.events}
