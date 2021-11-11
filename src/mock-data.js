@@ -163,6 +163,7 @@ let mockData = [
     },
     eventType: 'default',
   },
+  /*
   {
     kind: 'calendar#event',
     etag: '"3181161784712000"',
@@ -1693,7 +1694,8 @@ let mockData = [
       useDefault: true,
     },
     eventType: 'default',
-  },
+  }, 
+  */
 ];
 
 export { mockData };
