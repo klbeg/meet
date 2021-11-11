@@ -20,12 +20,14 @@ class NumberOfEvents extends Component {
 
   render() {
     return (
-      <div>
+      <div className="NumberOfEvents">
+        <label className="input-label" for="set-events-length">
+          Number of events
+        </label>
         <input
-          className="setEventsLength"
+          id="set-events-length"
           onChange={this.handleUpdateEventsLength}
           type="text"
-          placeholder="setEventsLength"
         />
         <ErrorAlert text={this.state.infoText} />
       </div>

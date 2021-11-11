@@ -44,9 +44,9 @@ class CitySearch extends Component {
     return (
       <div className="CitySearch">
         <InfoAlert text={this.state.infoText} />
+        <label for="city-search">Search by city</label>
         <input
-          className="city"
-          placeholder="CitySearch"
+          id="city-search"
           value={this.state.query}
           onChange={this.handleInputChange}
           onFocus={() => {

@@ -4,6 +4,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 const EventGenre = ({ events }) => {
   const [data, setData] = useState([]);
   const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
+  const COLORS = ['#5D0775', '#D459F7', '#652A75', '#9A0CC2', '#C40FF5'];
 
   const getData = () => {
     const data = genres.map((genre) => {
@@ -23,20 +24,24 @@ const EventGenre = ({ events }) => {
   }, [events]);
 
   return (
-    <ResponsiveContainer height={400}>
+    <ResponsiveContainer height={400} width={400} className="pie-chart">
       <PieChart width={400} height={400}>
         <Pie
           data={data}
           cx={200}
           cy={200}
-          lavelLine={false}
+          labelLine={false}
           outerRadius={80}
           fill="#8884d8"
           dataKey="value"
           label={({ name, percent }) =>
             `${name} ${(percent * 100).toFixed(0)}%`
           }
-        ></Pie>
+        >
+          {data.map((entry, index) => {
+            return <Cell fill={COLORS[index]} />;
+          })}
+        </Pie>
       </PieChart>
     </ResponsiveContainer>
   );
