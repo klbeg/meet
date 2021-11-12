@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import {
-  ScatterChart,
-  Scatter,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
+// import {
+//   ScatterChart,
+//   Scatter,
+//   XAxis,
+//   YAxis,
+//   CartesianGrid,
+//   Tooltip,
+//   ResponsiveContainer,
+// } from 'recharts';
 
 import './App.scss';
 import EventGenre from './EventGenre';
@@ -41,18 +41,18 @@ class App extends Component {
       });
     }
 
-    // this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
 
-    // if ((code || isTokenValid) && this.mounted) {
-    //   getEvents().then((events) => {
-    //     if (this.mounted) {
-    //       this.setState({
-    //         events: events,
-    //         locations: extractLocations(events),
-    //       });
-    //     }
-    //   });
-    // }
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events: events,
+            locations: extractLocations(events),
+          });
+        }
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -91,7 +91,8 @@ class App extends Component {
   };
 
   render() {
-    const { locations, numberOfEvents, events } = this.state;
+    const { events } = this.state;
+    // const { locations, numberOfEvents, events } = this.state;
     if (this.state.showWelcomeScreen === undefined)
       return <div className="App" />;
     return (

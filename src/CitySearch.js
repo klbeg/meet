@@ -58,17 +58,19 @@ class CitySearch extends Component {
           className="suggestions"
           style={this.state.showSuggestions ? {} : { display: 'none' }}
         >
-          {this.state.suggestions.map((suggestion) => (
-            <li
-              onClick={() => this.handleItemClicked(suggestion)}
-              key={suggestion}
-            >
-              {suggestion}
+          <div className="suggestions-backdrop">
+            {this.state.suggestions.map((suggestion) => (
+              <li
+                onClick={() => this.handleItemClicked(suggestion)}
+                key={suggestion}
+              >
+                {suggestion}
+              </li>
+            ))}
+            <li key="all" onClick={() => this.handleItemClicked('all')}>
+              <b>See all cities</b>
             </li>
-          ))}
-          <li key="all" onClick={() => this.handleItemClicked('all')}>
-            <b>See all cities</b>
-          </li>
+          </div>
         </ul>
       </div>
     );
